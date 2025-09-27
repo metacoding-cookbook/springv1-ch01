@@ -24,9 +24,7 @@ public class BoardRepository{
     public void save(Board board){
         em.persist(board);
     }
-    public void deleteById(int id) {
-        em.createQuery("delete from Board b where b.id = :id")
-          .setParameter("id", id)
-          .executeUpdate();
+    public void delete(Board board) {
+        em.remove(board);
     }
 }

@@ -32,9 +32,11 @@ public class BoardService {
         Board board = requestDTO.toEntity(); //DTO -> 엔티티
         boardRepository.save(board);
     }
+    
     @Transactional
     public void 게시글삭제(Integer id){
-        boardRepository.deleteById(id);
+        Board board = boardRepository.findById(id).get();
+        boardRepository.delete(board);
     }
 
     public BoardResponse.DTO 게시글수정폼(Integer id){
